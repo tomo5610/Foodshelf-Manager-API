@@ -1,6 +1,6 @@
 openapi: "3.0.3"
 info:
-  title: Foodshelf-Manager-API 
+  title: Foodshelf-Manager-API
   description: |-
     食品の賞味期限管理アプリの仕様書です。
   version: 1.0.0
@@ -8,7 +8,7 @@ servers:
   - url: http://localhost:8080
 tags:
   - name: food
-    description:  食品の賞味期限に関する操作
+    description: 食品の賞味期限に関する操作
 
 paths:
   /food:
@@ -32,14 +32,14 @@ paths:
           schema:
             type: string
           example: 2023-12-01
-        - name: sendingTimes 
+        - name: sendingTimes
           in: query
           description: 送付回数が入力した回数の人の送付状況が検索される
           required: false
           schema:
             type: integer
           example: 3
-       
+
       
       responses:
         "200":
@@ -63,7 +63,7 @@ paths:
                     sendingTimes:
                       type: integer
                       example: 3
-                
+
     post:
       tags:
         - food
@@ -90,8 +90,8 @@ paths:
                   type: integer
                   nullable: false
                   example: 3
-                
-                
+
+
       responses:
         "201":
           description: Created
@@ -109,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BadRequestfood'
-                
+
 
   /food/{id}:
     get:
@@ -147,7 +147,7 @@ paths:
                     sendingTimes:
                       type: integer
                       example: 3
-                
+
 
         "404":
           description: Not Found
@@ -173,7 +173,7 @@ paths:
         required: true
         content:
           application/json:
-             schema:
+            schema:
               type: object
               properties:
                 foodName:
@@ -245,8 +245,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotFound'
-  
-  
+
+
 
 
 
