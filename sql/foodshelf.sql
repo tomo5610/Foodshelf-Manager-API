@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS foodshelf;
 
 CREATE TABLE foodshelf (
   id int unsigned AUTO_INCREMENT,
