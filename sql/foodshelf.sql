@@ -8,7 +8,7 @@ CREATE TABLE foodshelf (
   PRIMARY KEY(id)
  );
 
- INSERT INTO notifications (food_name, expiration_date, sending_times) VALUES ("鶏肉",　"2023-12-01", 3);
+INSERT INTO notifications (food_name, expiration_date, sending_times) VALUES ("鶏肉",　"2023-12-01", 3);
 INSERT INTO notifications (food_name, expiration_date, sending_times) VALUES ("牛肉",　"2023-12-11", 2);
 INSERT INTO notifications (food_name, expiration_date, sending_times) VALUES ("卵",　"2023-12-21", 1);
 INSERT INTO notifications (food_name, expiration_date, sending_times) VALUES ("玉ねぎ",　"2023-01-01", 2);
