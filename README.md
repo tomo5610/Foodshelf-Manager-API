@@ -21,7 +21,7 @@
     - React (JavaScript)
     - Chakra UI
 - その他
-    - MySQL 8.0.34
+    - MySQL 8.0.35
     - Docker 24.0.5
     - 自動テスト
     - CI (Checkstyle, Discordへの通知, 自動テストを実行)
