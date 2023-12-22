@@ -28,7 +28,7 @@
     - AWSデプロイ
 
 ## アプリケーション概略図
-![アプリケーション概略図](https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/42423295-1dea-4489-a200-49b9f5b8b573)
+![アプリケーション概略図 (1)](https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/6107f6ff-cf5c-4785-88e9-cc6152eafe71)
 
 ## アプリケーション機能一覧
 
