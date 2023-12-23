@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 public class FoodshelfServiceImpl implements FoodshelfService {
     private final FoodshelfMapper foodshelfMapper;
@@ -46,5 +45,3 @@ public class FoodshelfServiceImpl implements FoodshelfService {
         foodshelfMapper.deleteFoodshelf(id);
     }
 }
-
-

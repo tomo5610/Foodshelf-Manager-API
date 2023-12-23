@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-// Foodshelf.java
 @Getter
 @Setter
 public class Foodshelf {
@@ -30,4 +29,3 @@ public class Foodshelf {
         this.sendingTimes = sendingTimes;
     }
 }
-

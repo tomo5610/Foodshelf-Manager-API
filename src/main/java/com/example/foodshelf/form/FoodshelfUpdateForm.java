@@ -20,8 +20,6 @@ public class FoodshelfUpdateForm {
     @NotNull
     private int sendingTimes;
 
-
-    // @AllArgsConstructorを削除し、このコンストラクタを手動で追加
     public FoodshelfUpdateForm(int id, String foodName, LocalDate expirationDate, int sendingTimes) {
         this.id = id;
         this.foodName = foodName;

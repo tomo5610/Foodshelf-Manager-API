@@ -27,7 +27,6 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
-// FoodshelfController.java
 @RestController
 @CrossOrigin(origins = "*")
 public class FoodshelfController {
@@ -85,5 +84,3 @@ public class FoodshelfController {
         return new ResponseEntity(body, HttpStatus.NOT_FOUND);
     }
 }
-
-
