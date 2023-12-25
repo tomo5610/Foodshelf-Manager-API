@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -28,4 +29,21 @@ public class Foodshelf {
         this.expirationDate = expirationDate;
         this.sendingTimes = sendingTimes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Foodshelf foodshelf = (Foodshelf) o;
+        return id == foodshelf.id &&
+                sendingTimes == foodshelf.sendingTimes &&
+                Objects.equals(foodName, foodshelf.foodName) &&
+                Objects.equals(expirationDate, foodshelf.expirationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, foodName, expirationDate, sendingTimes);
+    }
+
 }
