@@ -62,9 +62,11 @@ public class FoodshelfController {
     @PatchMapping("/foodshelves/{id}")
     public ResponseEntity<Map<String, String>> update(
             @PathVariable("id") int id, @RequestBody @Validated FoodshelfUpdateForm form) {
-        foodshelfService.updateFoodshelf(form.convertToFoodshelf(id));
+        Foodshelf updatedFoodshelf = form.convertToFoodshelf(id);
+        foodshelfService.updateFoodshelf(id, updatedFoodshelf);
         return ResponseEntity.ok(Map.of("message", "foodshelf successfully updated"));
     }
+
 
     @DeleteMapping("/foodshelves/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {

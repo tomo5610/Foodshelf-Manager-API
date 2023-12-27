@@ -36,12 +36,23 @@ public class FoodshelfServiceImpl implements FoodshelfService {
     }
 
     @Override
-    public void updateFoodshelf(Foodshelf foodshelf) {
-        foodshelfMapper.updateFoodshelf(foodshelf);
+    public void updateFoodshelf(int id, Foodshelf foodshelf) {
+        // 指定したIDに対応するFoodshelfが存在するか確認
+        Foodshelf existingFoodshelf = foodshelfMapper.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Resource not found with id: " + id));
+
+        // 更新対象のフィールドを設定
+        existingFoodshelf.setFoodName(foodshelf.getFoodName());
+        existingFoodshelf.setExpirationDate(foodshelf.getExpirationDate());
+        existingFoodshelf.setSendingTimes(foodshelf.getSendingTimes());
+
+        // 更新処理を実行
+        foodshelfMapper.updateFoodshelf(existingFoodshelf);
     }
 
     @Override
     public void deleteFoodshelf(int id) {
+        Foodshelf deleteFoodshelf = foodshelfMapper.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found with id: " + id));
         foodshelfMapper.deleteFoodshelf(id);
     }
 }
