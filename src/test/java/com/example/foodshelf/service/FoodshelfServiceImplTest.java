@@ -97,7 +97,7 @@ public class FoodshelfServiceImplTest {
 
         Foodshelf updateFoodshelf = new Foodshelf(99, "鶏肉", LocalDate.of(2023, 12, 1), 3);
 
-        assertThatThrownBy(() -> foodshelfServiceImpl.updateFoodshelf(99, updateFoodshelf)) // 引数を修正
+        assertThatThrownBy(() -> foodshelfServiceImpl.updateFoodshelf(99, updateFoodshelf))
                 .isInstanceOf(ResourceNotFoundException.class)
                 .hasMessage("Resource not found with id: 99");
     }
