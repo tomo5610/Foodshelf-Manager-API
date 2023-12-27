@@ -13,7 +13,7 @@ public interface FoodshelfService {
 
     Foodshelf createFoodshelf(String foodName, LocalDate expirationDate, int sendingTimes);
 
-    void updateFoodshelf(Foodshelf foodshelf);
+    void updateFoodshelf(int id, Foodshelf updatedFoodshelf);
 
     void deleteFoodshelf(int id);
 }
