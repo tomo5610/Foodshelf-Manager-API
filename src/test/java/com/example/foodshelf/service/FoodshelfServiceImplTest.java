@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 public class FoodshelfServiceImplTest {
 
     @InjectMocks
-    FoodshelfServiceImpl foodshelfService;
+    FoodshelfServiceImpl foodshelfServiceImpl;
 
     @Mock
     FoodshelfMapper foodshelfMapper;
@@ -34,7 +34,7 @@ public class FoodshelfServiceImplTest {
         doReturn(Optional.of(new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3)))
                 .when(foodshelfMapper).findById(1);
 
-        Foodshelf actual = foodshelfService.findById(1);
+        Foodshelf actual = foodshelfServiceImpl.findById(1);
         assertThat(actual).isEqualTo(new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3));
         verify(foodshelfMapper, times(1)).findById(1);
     }
@@ -44,7 +44,7 @@ public class FoodshelfServiceImplTest {
         doReturn(Optional.empty()).when(foodshelfMapper).findById(99);
 
         assertThatThrownBy(
-                () -> foodshelfService.findById(99)
+                () -> foodshelfServiceImpl.findById(99)
         ).isInstanceOfSatisfying(
                 ResourceNotFoundException.class, e -> assertThat(e.getMessage()).isEqualTo("Resource not found with id: 99")
         );
@@ -56,7 +56,7 @@ public class FoodshelfServiceImplTest {
                 new Foodshelf(2, "牛肉", LocalDate.of(2023, 12, 11), 2)))
                 .when(foodshelfMapper).findByConditions("鶏肉", LocalDate.of(2023, 12, 14), 3);
 
-        List<Foodshelf> actual = foodshelfService.findByConditions("鶏肉", LocalDate.of(2023, 12, 14), 3);
+        List<Foodshelf> actual = foodshelfServiceImpl.findByConditions("鶏肉", LocalDate.of(2023, 12, 14), 3);
         assertThat(actual).isEqualTo(List.of(new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3),
                 new Foodshelf(2, "牛肉", LocalDate.of(2023, 12, 11), 2)));
     }
@@ -67,20 +67,47 @@ public class FoodshelfServiceImplTest {
         Foodshelf foodshelf = new Foodshelf("鶏肉", expirationDate, 3);
         doNothing().when(foodshelfMapper).createFoodshelf(foodshelf);
 
-        foodshelfService.createFoodshelf("鶏肉", expirationDate, 3);
+        foodshelfServiceImpl.createFoodshelf("鶏肉", expirationDate, 3);
         verify(foodshelfMapper, times(1)).createFoodshelf(foodshelf);
     }
 
     @Test
     public void 存在する食品棚のIDを指定したときに食品棚を更新できること() throws Exception {
+        doReturn(Optional.of(new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3)))
+                .when(foodshelfMapper).findById(1);
+
         Foodshelf updateFoodshelf = new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3);
-        foodshelfService.updateFoodshelf(updateFoodshelf);
+        foodshelfServiceImpl.updateFoodshelf(1, updateFoodshelf);
+
         verify(foodshelfMapper, times(1)).updateFoodshelf(updateFoodshelf);
     }
 
     @Test
     public void 存在する食品棚のIDを指定したときに食品棚を削除できること() throws Exception {
-        foodshelfService.deleteFoodshelf(1);
+        doReturn(Optional.of(new Foodshelf(1, "鶏肉", LocalDate.of(2023, 12, 1), 3)))
+                .when(foodshelfMapper).findById(1);
+
+        foodshelfServiceImpl.deleteFoodshelf(1);
         verify(foodshelfMapper, times(1)).deleteFoodshelf(1);
+    }
+
+    @Test
+    public void 更新指定したIDが存在しないとき例外を返すこと() {
+        doReturn(Optional.empty()).when(foodshelfMapper).findById(99);
+
+        Foodshelf updateFoodshelf = new Foodshelf(99, "鶏肉", LocalDate.of(2023, 12, 1), 3);
+
+        assertThatThrownBy(() -> foodshelfServiceImpl.updateFoodshelf(99, updateFoodshelf))
+                .isInstanceOf(ResourceNotFoundException.class)
+                .hasMessage("Resource not found with id: 99");
+    }
+
+    @Test
+    public void 削除指定したIDが存在しないとき例外を返すこと() {
+        doReturn(Optional.empty()).when(foodshelfMapper).findById(99);
+
+        assertThatThrownBy(() -> foodshelfServiceImpl.deleteFoodshelf(99))
+                .isInstanceOf(ResourceNotFoundException.class)
+                .hasMessage("Resource not found with id: 99");
     }
 }
