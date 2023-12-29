@@ -1,0 +1,13 @@
+foodshelf:
+  - id: 1
+    food_name: "鶏肉"
+    expiration_date: "2023-12-01"
+    sending_times: "3"
+  - id: 2
+    food_name: "牛肉"
+    expiration_date: "2023-12-11"
+    sending_times: "2"
+  - id: 3
+    food_name: "卵"
+    expiration_date: "2023-12-21"
+    sending_times: "1"
