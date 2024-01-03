@@ -6,10 +6,10 @@ import { Router } from './router/Router';
 function App() {
   return (
     <ChakraProvider>
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
-  </ChakraProvider>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
