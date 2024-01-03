@@ -17,10 +17,10 @@ export const CreateFoodshelf = () => {
 
     const navigate = useNavigate();
 
-    const onClickBackFindPage = () => navigate("/find")
+    const onClickBackFindPage = () => navigate("/search")
     const onClickCreateEquipment = () => {
       alert("食品を登録しますか？")
-      axios.post("http://localhost:8080/foodshelves", { "name": newFoodName, "number": newExpirationDate, "location": newSendingTimes })
+      axios.post("http://localhost:8080/foodshelves", { "fooName": newFoodName, "expirationDate": newExpirationDate, "sendingTimes": newSendingTimes })
       .then((res) => setCreateMessage(res.data.message));
       alert(createMessage);
     }
