@@ -16,7 +16,7 @@ export const FoodshelfDetail: FC = () => {
 
   const navigate = useNavigate();
 
-  const onClickBackFindPage = () => navigate("/find");
+  const onClickBackFindPage = () => navigate("/search");
   const onClickUpdatePage = () =>
     navigate(`/update/${id}`, { state: { id: id } });
 
