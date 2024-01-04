@@ -1,73 +1,69 @@
-import { Divider, HStack, Heading, Input } from "@chakra-ui/react";
-
+import { FC, memo, useCallback, useEffect, useState } from "react";
+import { Box, Divider, HStack, Heading, useBoolean } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import { FC, useEffect, useState } from "react";
-import axios from "axios";
-import { Foodshelf } from "../../types/Foodshelf";
 import { BaseButton } from "../atoms/BaseButton";
+import { Foodshelf } from "../../types/Foodshelf";
+import { instance } from "../../axios/config";
+import { UpdateFoodshelfModal } from "../organisms/UpdateFoodshelfModal";
+import { FoodshelfInformation } from "../molecules/FoodshelfInfomation";
+import { DeleteFoodshelfConfirmModal } from "../organisms/DeleteFoodshelfConfirmModal";
+export const FoodshelfDetail: FC = memo(() => {
+  const { id } = useParams();
 
-export const FoodshelfDetail: FC = () => {
   const [selectedFoodshelf, setSelectedFoodshelf] = useState<Foodshelf | null>(
     null
   );
-  const [deleteMessage, setDeleteMessage] = useState("");
 
-  const { id } = useParams();
+  const [updateFoodshelfFlag, setUpdateFoodshelfFlag] = useBoolean();
+  const [deleteFoodshelfFlag, setDeleteFoodshelfFlag] = useBoolean();
 
-  const navigate = useNavigate();
-
-  const onClickBackFindPage = () => navigate("/search");
-  const onClickUpdatePage = () =>
-    navigate(`/update/${id}`, { state: { id: id } });
-
-  const onClickDelete = () => {
-    alert("この食品を削除しますか？");
-    axios
-      .delete<string>(`http://localhost:8080/foodshelves/${id}`)
-      .then((res) => setDeleteMessage(res.data));
-    alert(deleteMessage);
-  };
-
+  // Spring BootのAPIを叩いて指定した食品IDの食品情報を取得する
   useEffect(() => {
-    axios
-      .get<Foodshelf>(`http://localhost:8080/foodshelves/${id}`)
+    instance
+      .get<Foodshelf>(`/foodshelves/${id}`)
       .then((res) => setSelectedFoodshelf(res.data));
   }, [id]);
 
+  // UpdateFoodshelfModalで更新処理が実行されたら、更新後の食品情報を反映する。
+  const handleFoodshelfUpdate = useCallback((updatedFoodshelves: Foodshelf) => {
+    setSelectedFoodshelf(updatedFoodshelves);
+  }, []);
+
+  const navigate = useNavigate();
+
+  // 食品検索画面に遷移
+  const onClickBackSearchPage = () => navigate("/search");
+
   return (
-    <div>
-      <Heading>食品情報詳細</Heading>
-      <br />
-      <Heading size={"md"}>食品情報詳細</Heading>
+    <Box px={10} py={5}>
+      <Heading size="lg">食品詳細</Heading>
       <Divider my={3} />
-      <HStack>
-        <p>食品名</p>
-        <Input
-          value={selectedFoodshelf?.foodName}
-          width={"400px"}
-          backgroundColor={"gray.100"}
-          placeholder="食品名"
+      <Box px={3}>
+        <HStack spacing={10}>
+          <Heading size="md">食品情報</Heading>
+          <BaseButton onClick={setUpdateFoodshelfFlag.on}>
+            食品情報修正
+          </BaseButton>
+        </HStack>
+        <UpdateFoodshelfModal
+          updateFoodshelf={selectedFoodshelf}
+          isOpen={updateFoodshelfFlag}
+          onClose={setUpdateFoodshelfFlag.off}
+          onFoodshelvesUpdate={handleFoodshelfUpdate}
         />
-        <p>賞味期限</p>
-        <Input
-          value={selectedFoodshelf?.expirationDate?.toLocaleDateString() || ""}
-          width={"400px"}
-          backgroundColor={"gray.100"}
-          placeholder="賞味期限"
-        />
-        <p>通知回数</p>
-        <Input
-          value={selectedFoodshelf?.sendingTimes}
-          width={"400px"}
-          backgroundColor={"gray.100"}
-          placeholder="通知回数"
-        />
-      </HStack>
-      <br />
-      <br />
-      <BaseButton onClick={onClickBackFindPage}>戻る</BaseButton>
-      <BaseButton onClick={onClickUpdatePage}>修正</BaseButton>
-      <BaseButton onClick={onClickDelete}>削除</BaseButton>
-    </div>
+        <Divider my={3} />
+        <FoodshelfInformation selectedFoodshelf={selectedFoodshelf} />
+        <br />
+        <br />
+        <HStack>
+          <BaseButton onClick={onClickBackSearchPage}>戻る</BaseButton>
+          <BaseButton onClick={setDeleteFoodshelfFlag.on}>削除</BaseButton>
+          <DeleteFoodshelfConfirmModal
+            isOpen={deleteFoodshelfFlag}
+            onClose={setDeleteFoodshelfFlag.off}
+          />
+        </HStack>
+      </Box>
+    </Box>
   );
-};
+});
