@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { SearchFoodshelf } from '../components/pages/SearchFoodshelf';
 import { CreateFoodshelf } from '../components/pages/CreateFoodshelf';
-import { FoodshelfDetail } from '../components/pages/FoodshelfDetail';
 import { FC } from 'react';
 import { NotFound } from '../components/pages/NotFound';
 import { HeaderLayout } from '../components/templates/HeaderLayout';
+import { FoodshelfDetail } from '../components/pages/FoodshelfDetail';
 
 export const Router: FC = () => {
   return (
