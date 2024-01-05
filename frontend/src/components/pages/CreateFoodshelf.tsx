@@ -37,8 +37,8 @@ export const CreateFoodshelf = memo(() => {
   const onClickCreateFoodshelf = async () => {
     let res = await instance
       .post("http://localhost:8080/foodshelves", {
-        fooName: newFoodName,
-        ExpirationDate: newExpirationDate,
+        foodName: newFoodName,
+        expirationDate: newExpirationDate,
         sendingTimes: newSendingTimes,
       })
       .catch(() =>

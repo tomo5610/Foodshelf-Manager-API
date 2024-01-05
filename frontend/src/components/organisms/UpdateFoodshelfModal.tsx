@@ -97,7 +97,7 @@ export const UpdateFoodshelfModal: FC<Props> = memo((props) => {
             <FormControl>
               <FormLabel>賞味期限</FormLabel>
               <Text fontSize={"xs"} color={"red.400"}>
-                ※ 入力必須　※ 20文字以内で入力してください
+                ※ 入力必須　※ 2023-12-31（yyyy-mm-dd）
               </Text>
               <Input
                 value={updateExpirationDate}
@@ -108,7 +108,7 @@ export const UpdateFoodshelfModal: FC<Props> = memo((props) => {
             <FormControl>
               <FormLabel>通知回数</FormLabel>
               <Text fontSize={"xs"} color={"red.400"}>
-                ※ 入力必須　※ 20文字以内で入力してください
+                ※ 入力必須
               </Text>
               <Input
                 value={updateSendingTimes}

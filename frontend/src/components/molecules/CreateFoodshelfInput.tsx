@@ -10,7 +10,7 @@ export const CreateFoodshelfInput = memo((props: Props) => {
 
   const [newFoodName, setNewFoodName] = useState("");
   const [newExpirationDate, setNewExpirationDate] = useState("");
-  const [newSendingTimes, setNewSendingTimes] = useState<string | "">("");
+  const [newSendingTimes, setNewSendingTimes] = useState("");
 
   // 入力された内容を受け取る
   const onChangeNewFoodName = (e: ChangeEvent<HTMLInputElement>) => setNewFoodName(e.target.value);
@@ -35,14 +35,14 @@ export const CreateFoodshelfInput = memo((props: Props) => {
         <FormControl>
           <FormLabel>賞味期限</FormLabel>
           <Input width={"400px"} placeholder="賞味期限" onChange={onChangeNewExpirationDate} />
-          <Text fontSize={"xs"} color={"red.400"}>※ 入力必須　※ 20文字以内で入力してください</Text>
+          <Text fontSize={"xs"} color={"red.400"}>※ 入力必須　※ 2023-12-31（yyyy-mm-dd</Text>
         </FormControl>
       </Box>
       <Box>
         <FormControl>
           <FormLabel>通知回数</FormLabel>
           <Input width={"400px"} placeholder="通知回数" onChange={onChangeNewSendingTimes} />
-          <Text fontSize={"xs"} color={"red.400"}>※ 入力必須　※ 20文字以内で入力してください</Text>
+          <Text fontSize={"xs"} color={"red.400"}>※ 入力必須</Text>
         </FormControl>
       </Box>
     </HStack>
