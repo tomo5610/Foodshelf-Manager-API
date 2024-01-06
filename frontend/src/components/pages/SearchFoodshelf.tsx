@@ -5,7 +5,7 @@ import { BaseButton } from "../atoms/BaseButton";
 import { SearchInput } from "../molecules/SearchInput";
 
 import { Foodshelf } from "../../types/Foodshelf";
-import { SearchResult } from "../organisms/SearchReasult";
+import { SearchResult } from "../organisms/SearchResult";
 import { instance } from "../../axios/config";
 
 export const SearchFoodshelf = memo(() => {
