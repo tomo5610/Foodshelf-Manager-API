@@ -78,10 +78,13 @@
 以下のテストコードを実装。
 
 - 単体テスト  
-  NotificationServiceImpl  
-  NotificationMapper
+  FoodshelfServiceImpl  
+  FoodshelfMapper
 - 結合テスト  
-  NotificationController
+  FoodshelfController
+
+自動テストの実行結果
+<table><tr><th><th>Tests</th><th>Passed ✅</th><th>Skipped ⏭️</th><th>Failed ❌</th></tr><tr><td>JUnit Test Report</td><td>22 ran</td><td>22 passed</td><td>0 skipped</td><td>0 failed</td></tr></table>
 
 自動テストの実行結果
 
