@@ -1,7 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { Box, Divider, HStack, Heading } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
 import { BaseButton } from "../atoms/BaseButton";
 import { CreateFoodshelfInput } from "../molecules/CreateFoodshelfInput";
 import { useMessage } from "../../hooks/useMessage";
@@ -37,8 +36,8 @@ export const CreateFoodshelf = memo(() => {
   const onClickCreateFoodshelf = async () => {
     let res = await instance
       .post("http://localhost:8080/foodshelves", {
-        fooName: newFoodName,
-        ExpirationDate: newExpirationDate,
+        foodName: newFoodName,
+        expirationDate: newExpirationDate,
         sendingTimes: newSendingTimes,
       })
       .catch(() =>
@@ -53,8 +52,6 @@ export const CreateFoodshelf = memo(() => {
         title: `${response}。食品詳細画面に遷移します。`,
         status: "success",
       });
-      const newId = res.data.newId;
-      navigate(`/update/${newId}`);
     }
   };
 

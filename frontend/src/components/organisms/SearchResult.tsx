@@ -42,9 +42,9 @@ export const SearchResult = memo((props: Props) => {
                     {foodshelf.foodName}
                   </Link>
                 </Td>
-                <Td>{foodshelf.sendingTimes}</Td>
+                <Td>{foodshelf.expirationDate}</Td>
                 <Td>
-                  {foodshelf.expirationDate}
+                  {foodshelf.sendingTimes}
                 </Td>
               </Tr>
             ))}
