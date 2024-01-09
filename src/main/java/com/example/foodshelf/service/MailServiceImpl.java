@@ -36,7 +36,7 @@ public class MailServiceImpl implements MailService {
 
     private void sendNotificationEmail(Foodshelf foodshelf) {
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("tora17815@gmail.com");
+        msg.setTo("t4151579@gmail.com");
         msg.setSubject("[Notification] 賞味期限が近づいています");
         msg.setText("以下の食品の賞味期限が近づいています。"
                 + "\n食品名：" + foodshelf.getFoodName()
