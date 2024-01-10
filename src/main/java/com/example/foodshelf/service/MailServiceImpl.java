@@ -22,13 +22,15 @@ public class MailServiceImpl implements MailService {
 
     @Override
     public void mailSend() {
-        List<Foodshelf> foodshelves = mailMapper.findFoodshelvesWithExpirationDate();
+        List<Foodshelf> FoodshelvesWithExpirationDate = mailMapper.findFoodshelvesWithExpirationDate();
 
-        for (Foodshelf foodshelf : foodshelves) {
+        for (Foodshelf foodshelf : FoodshelvesWithExpirationDate) {
+            // 賞味期限の計算
             LocalDate today = LocalDate.now();
-            LocalDate notificationDate = foodshelf.getExpirationDate().minusDays(foodshelf.getSendingTimes());
+            LocalDate expirationDate = foodshelf.getExpirationDate();
 
-            if (today.isEqual(notificationDate) || today.isAfter(notificationDate)) {
+            // 賞味期限が未来の場合、かつ、賞味期限がSendingTimesの日数前から通知
+            if (expirationDate.isAfter(today) && today.plusDays(foodshelf.getSendingTimes()).isAfter(expirationDate)) {
                 sendNotificationEmail(foodshelf);
             }
         }
