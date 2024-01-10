@@ -49,9 +49,10 @@ export const CreateFoodshelf = memo(() => {
     if (res) {
       const response: string = res.data.message;
       showMessage({
-        title: `${response}。食品詳細画面に遷移します。`,
+        title: `${response}食品検索画面に戻ります。`,
         status: "success",
       });
+      navigate("/search");
     }
   };
 

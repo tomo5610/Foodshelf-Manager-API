@@ -24,7 +24,7 @@ export const DeleteFoodshelfConfirmModal = memo((props: Props) => {
       }));
     if (res) {
       const response: string = res.data.message;
-      showMessage({ title: `${response}。食品検索画面に戻ります。`, status: "success" });
+      showMessage({ title: `${response}食品検索画面に戻ります。`, status: "success" });
     }
     navigate("/search");
 
