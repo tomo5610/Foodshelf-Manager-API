@@ -67,7 +67,7 @@ public class FoodshelfRestApiIntegrationTest {
                 .andExpect(header().string("Location", matchesPattern("http://localhost/foodshelves/\\d+")))
                 .andExpect(content().json("""
                         {
-                            "message": "foodshelf successfully created"
+                            "message": "設備が正常に登録されました"
                         }
                         """));
     }
