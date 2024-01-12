@@ -18,7 +18,7 @@
     - SpringBoot 3.2.0
     - MyBatis
 - フロントエンド
-    - React (JavaScript)
+    - React 18.2.0(TypeScript)
     - Chakra UI
 - その他
     - MySQL 8.0.35
