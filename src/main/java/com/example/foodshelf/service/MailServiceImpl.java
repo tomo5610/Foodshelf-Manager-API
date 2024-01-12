@@ -25,11 +25,9 @@ public class MailServiceImpl implements MailService {
         List<Foodshelf> FoodshelvesWithExpirationDate = mailMapper.findFoodshelvesWithExpirationDate();
 
         for (Foodshelf foodshelf : FoodshelvesWithExpirationDate) {
-            // 賞味期限の計算
             LocalDate today = LocalDate.now();
             LocalDate expirationDate = foodshelf.getExpirationDate();
 
-            // 賞味期限が未来の場合、かつ、賞味期限がSendingTimesの日数前から通知
             if (expirationDate.isAfter(today) && today.plusDays(foodshelf.getSendingTimes()).isAfter(expirationDate)) {
                 sendNotificationEmail(foodshelf);
             }

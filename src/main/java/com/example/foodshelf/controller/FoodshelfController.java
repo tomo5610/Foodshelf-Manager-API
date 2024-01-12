@@ -51,7 +51,7 @@ public class FoodshelfController {
                 .path("/foodshelves/" + foodshelf.getId())
                 .build()
                 .toUri();
-        return ResponseEntity.created(url).body(Map.of("message", "設備が正常に登録されました"));
+        return ResponseEntity.created(url).body(Map.of("message", "食品が正常に登録されました。"));
     }
 
     @PatchMapping("/foodshelves/{id}")
@@ -59,13 +59,13 @@ public class FoodshelfController {
             @PathVariable("id") int id, @RequestBody @Validated FoodshelfUpdateForm form) {
         Foodshelf updatedFoodshelf = form.convertToFoodshelf(id);
         foodshelfService.updateFoodshelf(id, updatedFoodshelf);
-        return ResponseEntity.ok(Map.of("message", "設備が正常に更新されました"));
+        return ResponseEntity.ok(Map.of("message", "食品が正常に更新されました。"));
     }
 
 
     @DeleteMapping("/foodshelves/{id}")
     public ResponseEntity<Map<String, String>> delete(@PathVariable("id") int id) {
         foodshelfService.deleteFoodshelf(id);
-        return ResponseEntity.ok(Map.of("message", "設備が正常に削除されました"));
+        return ResponseEntity.ok(Map.of("message", "食品が正常に削除されました。"));
     }
 }

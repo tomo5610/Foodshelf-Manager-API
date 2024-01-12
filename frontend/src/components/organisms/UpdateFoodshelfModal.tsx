@@ -36,14 +36,12 @@ export const UpdateFoodshelfModal: FC<Props> = memo((props) => {
   const [updateExpirationDate, setUpdateExpirationDate] = useState("");
   const [updateSendingTimes, setUpdateSendingTimes] = useState("");
 
-  // propsで渡された食品情報を各項目に渡す
   useEffect(() => {
     setUpdateFoodName(updateFoodshelf?.foodName ?? "");
     setUpdateExpirationDate(updateFoodshelf?.expirationDate ?? "");
     setUpdateSendingTimes(updateFoodshelf?.sendingTimes ?? "");
   }, [updateFoodshelf, isOpen]);
 
-  // 入力した内容を食品情報の各項目に渡す
   const onChangeUpdateFoodName = (e: ChangeEvent<HTMLInputElement>) =>
     setUpdateFoodName(e.target.value);
   const onChangeUpdateExpirationDate = (e: ChangeEvent<HTMLInputElement>) =>
@@ -51,7 +49,6 @@ export const UpdateFoodshelfModal: FC<Props> = memo((props) => {
   const onChangeUpdateSendingTimes = (e: ChangeEvent<HTMLInputElement>) =>
     setUpdateSendingTimes(e.target.value);
 
-  // Spring BootのAPIを叩いて、前段で入力した内容で指定した食品IDの食品情報を更新し、更新後の食品情報を取得して反映する
   const onClickUpdate = async () => {
     let res = await instance
       .patch(`/foodshelves/${id}`, {

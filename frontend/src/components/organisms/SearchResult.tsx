@@ -19,7 +19,7 @@ type Props = {
 export const SearchResult = memo((props: Props) => {
   const { foodshelves } = props;
 
-  // propsで渡された食品リストを検索結果として表示する。点検期限が１ヶ月以内の場合は赤く表示する。
+
   return (
     <>
       <TableContainer>
