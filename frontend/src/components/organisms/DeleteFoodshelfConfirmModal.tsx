@@ -13,10 +13,8 @@ export const DeleteFoodshelfConfirmModal = memo((props: Props) => {
   const { isOpen, onClose } = props;
   const { showMessage } = useMessage();
   const { id } = useParams();
-
   const navigate = useNavigate();
 
-  // Spring BootのAPIを叩いて指定した食品IDの食品情報を削除する。その後食品検索画面に遷移する。
   const deleteFoodshelfExec = async () => {
     let res = await instance.delete(`/foodshelves/${id}`)
       .catch(() => showMessage({

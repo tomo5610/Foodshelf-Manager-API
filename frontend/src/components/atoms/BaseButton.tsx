@@ -9,7 +9,7 @@ type Props = {
 export const BaseButton: FC<Props> = memo((props) => {
   const { children, onClick } = props;
   return (
-    <Button colorScheme="teal" variant={"outline"} onClick={onClick} >
+    <Button colorScheme="green" variant={"outline"} onClick={onClick} >
       {children}
     </Button>
   );

@@ -17,21 +17,18 @@ export const FoodshelfDetail: FC = memo(() => {
   const [updateFoodshelfFlag, setUpdateFoodshelfFlag] = useBoolean();
   const [deleteFoodshelfFlag, setDeleteFoodshelfFlag] = useBoolean();
 
-  // Spring BootのAPIを叩いて指定した食品IDの食品情報を取得する
   useEffect(() => {
     instance
       .get<Foodshelf>(`/foodshelves/${id}`)
       .then((res) => setSelectedFoodshelf(res.data));
   }, [id]);
 
-  // UpdateFoodshelfModalで更新処理が実行されたら、更新後の食品情報を反映する。
   const handleFoodshelfUpdate = useCallback((updatedFoodshelves: Foodshelf) => {
     setSelectedFoodshelf(updatedFoodshelves);
   }, []);
 
   const navigate = useNavigate();
 
-  // 食品検索画面に遷移
   const onClickBackSearchPage = () => navigate("/search");
 
   return (

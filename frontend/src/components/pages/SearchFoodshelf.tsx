@@ -16,10 +16,8 @@ export const SearchFoodshelf = memo(() => {
 
   const navigate = useNavigate();
 
-  // 食品登録画面に遷移する
   const onClickCreatePage = () => navigate("/create");
 
-  // SearchInputで入力された内容を食品情報の各項目に渡す
   const handleSearchCondition = useCallback(
     (
       inputFoodName: string,
@@ -33,7 +31,6 @@ export const SearchFoodshelf = memo(() => {
     []
   );
 
-  // Spring BootのAPIを叩いて、前段で入力した条件に合致する食品情報を取得する。
   const onClickSearchFoodshelf = useCallback(() => {
     instance
       .get<Array<Foodshelf>>(
@@ -42,7 +39,6 @@ export const SearchFoodshelf = memo(() => {
       .then((res) => setFoodshelves(res.data));
   }, [foodName, expirationDate, sendingTimes]);
 
-  // 新規食品登録ボタン、検索条件入力欄、検索結果の表示
   return (
     <Box padding={5}>
       <HStack spacing={10}>

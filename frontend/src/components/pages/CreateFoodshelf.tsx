@@ -29,10 +29,8 @@ export const CreateFoodshelf = memo(() => {
 
   const navigate = useNavigate();
 
-  // 食品検索画面に遷移
   const onClickBackFindPage = () => navigate("/search");
 
-  // Spring BootのAPIを叩いて、前段で入力した内容で食品情報を登録する。その後、登録した食品の詳細画面に遷移する。
   const onClickCreateFoodshelf = async () => {
     let res = await instance
       .post("http://localhost:8080/foodshelves", {
