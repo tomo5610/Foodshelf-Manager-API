@@ -62,8 +62,6 @@ https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/3a1d558a-dba0
 <img width="471" alt="スクリーンショット 2024-01-31 12 19 17" src="https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/72ddac13-9ba2-446d-960f-750bb57728cf">
 
 
-## 画面詳細図
-
 ## API仕様書
 
 [swaggerを用いたAPI仕様書](https://tomo5610.github.io/Foodshelf-Manager-API/)
@@ -107,11 +105,19 @@ https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/3a1d558a-dba0
 自動テストの実行結果
 <table><tr><th><th>Tests</th><th>Passed ✅</th><th>Skipped ⏭️</th><th>Failed ❌</th></tr><tr><td>JUnit Test Report</td><td>22 ran</td><td>22 passed</td><td>0 skipped</td><td>0 failed</td></tr></table>
 
-自動テストの実行結果
-
-## 苦労したこと
 
 ## 振り返り
+開発期間は一ヶ月半を予定していました。
+
+バックエンドではCRUD処理が既に存在していたため、それをベースにしてメール通知機能を追加する形で実装しました。このため、バックエンドの実装は二週間弱で完了しました。
+
+一方で、フロントエンドの開発はバックエンドのJava学習期間と比較して短かったため、時間がかかってしまいました。慣れていない部分もあるかもしれませんが、コンポーネントで各機能を切り分けた際に他のファイルに依存する箇所が多く、ロジックをどこで切り分けるかに苦労しました。
+
+AWSに関しては、ポートフォリオ作成前に基本的な学習を行っていましたが、実際に利用するにあたり必要な部分を再学習しました。開発中には予期せぬエラーが連続して発生し、それに対処するために多くの時間を要しました。特にバージョンの違いによる問題が発生し、物事がうまく進まなくなる状況に直面し、その難しさを実感しました。この経験から、バージョン管理やエラーハンドリングの重要性を再認識し、今後の開発に生かしていきたいと考えています。
+
 
 ## 今後の展望
+- ログイン機能の実装
+- フロントのデザイン改良
+- 400 Bad Requestと404 Not Foundの時のフロントの実装
 
