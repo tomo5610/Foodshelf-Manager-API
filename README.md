@@ -43,6 +43,25 @@
 
 ## 使用イメージ
 
+### 登録
+https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/9b431798-323e-4810-85a1-968df1c0e0d0
+
+
+### 検索
+https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/9afc316a-f3ef-4d8a-8496-b1ca837b3748
+
+
+### 更新
+https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/0bbcdc1f-ae19-4ad8-ab0f-fa8223cc3fe3
+
+
+### 削除
+https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/3a1d558a-dba0-4087-8387-d31b6fef329b
+
+### メール通知機能
+<img width="471" alt="スクリーンショット 2024-01-31 12 19 17" src="https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/72ddac13-9ba2-446d-960f-750bb57728cf">
+
+
 ## 画面詳細図
 
 ## API仕様書
