@@ -70,7 +70,8 @@ https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/3a1d558a-dba0
 [swaggerを用いたAPI仕様書](https://tomo5610.github.io/Foodshelf-Manager-API/)
 
 ## インフラ構成図
-![foodshelf-aws](https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/80cacd1b-00ac-4f22-8715-cb9e71b8ec61)
+![foodshelf-aws](https://github.com/tomo5610/Foodshelf-Manager-API/assets/132969138/b35197c8-5fd6-4a83-a669-59c2783bc54e)
+
 
 
 ## ローカルでのアプリケーション起動方法
