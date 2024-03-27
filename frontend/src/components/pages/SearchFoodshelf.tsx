@@ -1,5 +1,5 @@
 import { Box, HStack, Heading } from "@chakra-ui/react";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BaseButton } from "../atoms/BaseButton";
 import { SearchInput } from "../molecules/SearchInput";
@@ -38,6 +38,12 @@ export const SearchFoodshelf = memo(() => {
       )
       .then((res) => setFoodshelves(res.data));
   }, [foodName, expirationDate, sendingTimes]);
+
+  useEffect(() => {
+    instance
+      .get<Array<Foodshelf>>(`http://localhost:8080/foodshelves`)
+      .then((res) => setFoodshelves(res.data));
+  }, []);
 
   return (
     <Box padding={5}>
